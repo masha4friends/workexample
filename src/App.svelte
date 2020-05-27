@@ -7,6 +7,10 @@
   function buttonRemove() {
     count -= 1;
   }
+  $: if (count <0 ) {
+		alert(`Cart cannot have a negative number of items.`);
+		count = 0;
+	}
   //functions to open and close navigation side bar
   function openNav() {
     document.getElementById("mySidebar").style.width = "250px";
@@ -27,7 +31,6 @@
     max-width: 500px;
     margin: 0 auto;
   }
-
   h1 {
     color: #c300ff;
     text-transform: uppercase;
@@ -44,6 +47,10 @@
   /* style for item description */
   .desc {
     font-size: 1em;
+  }
+  /* style for outside container that has all the cards inside */
+  .container {
+    text-align: center;
   }
   /* style for item card */
   .card {
@@ -75,7 +82,6 @@
     width: 100%;
     font-size: 18px;
   }
-
   .card button:hover {
     opacity: 0.7;
   }
@@ -102,7 +108,6 @@
     display: block;
     transition: 0.3s;
   }
-
   .sidebar a:hover {
     color: #ffadfb;
   }
@@ -142,7 +147,7 @@
     transition: margin-left 0.5s;
     padding: 16px;
   }
-  /* resize for media */
+  /* resize sidebar for media */
   @media screen and (max-height: 450px) {
     .sidebar {
       padding-top: 15px;
@@ -171,185 +176,187 @@
   <a href>Contact</a>
 </div>
 <!-- Apple card-->
-<div class="card">
-  <img
-    src="https://lh3.googleusercontent.com/proxy/lnjZqJYhIiksYxQkSvpWGxPcs4EjVBNYvHL-HtYfJAXVoACETIFvXU3NHD48QJH5xtWg2TqqYSlgYNNRrAlsSoNL"
-    alt="apple"
-    style="width:100%" />
-  <h2>Red Apple</h2>
-  <p class="price">$1.59</p>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star" />
-  <p class="desc">Savor the sweet taste of Honeycrisp Apples.</p>
-  <button type="button" on:click={buttonAdd} style="float:left;">
-    Add to Cart
-  </button>
-  <button type="button" on:click={buttonRemove} style="float:left;">
-    Remove from Cart
-  </button>
-</div>
-<!-- Banana card-->
-<div class="card">
-  <img
-    src="https://lh3.googleusercontent.com/proxy/tHMVOK-wrOqiS7CFJot0zJdEVVBMHjcvjHVNEk7nExetQ0M-XYJoYTqWcFXylFWi_Lh_bNVhBZTKouMmIMyPaHOwNvr6JlG-wwz0H8UjLOMw4Csigt9ig_9DhGV3zPUdud3F4LQ"
-    alt="banana"
-    style="width:98%" />
-  <h2>Banana</h2>
-  <p class="price">$1.99</p>
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star checked" />
-  <p>
-    Enhance breakfast and baking dishes by incorporating fresh Banana Fruit.
-  </p>
-  <button type="button" on:click={buttonAdd} style="float:left;">
-    Add to Cart
-  </button>
-  <button type="button" on:click={buttonRemove} style="float:left;">
-    Remove from Cart
-  </button>
-</div>
-<!-- Orange card-->
-<div class="card">
-  <img
-    src="https://i.dlpng.com/static/png/788986_preview_preview.png"
-    alt="orange"
-    style="width:98%" />
-  <h2>Orange</h2>
-  <p class="price">$1.50</p>
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star" />
-  <span class="fa fa-star" />
-  <p>
-    Enjoy the fresh sweetness of Navel Oranges. A great source of vitamin C.
-  </p>
-  <button type="button" on:click={buttonAdd} style="float:left;">
-    Add to Cart
-  </button>
-  <button type="button" on:click={buttonRemove} style="float:left;">
-    Remove from Cart
-  </button>
-</div>
-<!-- Kiwi card-->
-<div class="card">
-  <img
-    src="https://pluspng.com/img-png/kiwi-png-kiwi-png-image-fruit-kiwi-png-pictures-download-png-image-2464.png"
-    alt="kiwi"
-    style="width:95%" />
-  <h2>Kiwi</h2>
-  <p class="price">$1.39</p>
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star" />
-  <span class="fa fa-star" />
-  <span class="fa fa-star" />
-  <p>Treat yourself to the delicious and refreshing taste of kiwi.</p>
-  <button type="button" on:click={buttonAdd} style="float:left;">
-    Add to Cart
-  </button>
-  <button type="button" on:click={buttonRemove} style="float:left;">
-    Remove from Cart
-  </button>
-</div>
-<!-- Lime card-->
-<div class="card">
-  <img
-    src="https://lh3.googleusercontent.com/proxy/iveaEcYs0B-FTuBfxeR74EJv6bLMcPHI5xO6O8QXeHkUgWPIJKP3DS83Q7ryS2wQV227QBdYaF2ti0n79bL0VpXtLXnfhORFul5jIho2Beig47cHzxt7upsKuhwLPfhkvf1m"
-    alt="apple"
-    style="width:113.5%" />
-  <h2>Lime</h2>
-  <p class="price">$0.99</p>
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star" />
-  <span class="fa fa-star" />
+<div class="container">
+  <div class="card">
+    <img
+      src="https://i.ibb.co/yR6kmB0/unnamed-11.png"
+      alt="apple"
+      style="width:103.5%" />
+    <h2>Red Apple</h2>
+    <p class="price">$1.59</p>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star" />
+    <p class="desc">Savor the sweet taste of Honeycrisp Apples.</p>
+    <button type="button" on:click={buttonAdd} style="float:left;">
+      Add to Cart
+    </button>
+    <button type="button" on:click={buttonRemove} style="float:left;">
+      Remove from Cart
+    </button>
+  </div>
+  <!-- Banana card-->
+  <div class="card">
+    <img
+      src="https://lh3.googleusercontent.com/proxy/tHMVOK-wrOqiS7CFJot0zJdEVVBMHjcvjHVNEk7nExetQ0M-XYJoYTqWcFXylFWi_Lh_bNVhBZTKouMmIMyPaHOwNvr6JlG-wwz0H8UjLOMw4Csigt9ig_9DhGV3zPUdud3F4LQ"
+      alt="banana"
+      style="width:98%" />
+    <h2>Banana</h2>
+    <p class="price">$1.99</p>
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star checked" />
+    <p>
+      Enhance breakfast and baking dishes by incorporating fresh Banana Fruit.
+    </p>
+    <button type="button" on:click={buttonAdd} style="float:left;">
+      Add to Cart
+    </button>
+    <button type="button" on:click={buttonRemove} style="float:left;">
+      Remove from Cart
+    </button>
+  </div>
+  <!-- Orange card-->
+  <div class="card">
+    <img
+      src="https://i.ibb.co/bLf0L43/788986-preview-preview.png"
+      alt="orange"
+      style="width:98%" />
+    <h2>Orange</h2>
+    <p class="price">$1.50</p>
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star" />
+    <span class="fa fa-star" />
+    <p>
+      Enjoy the fresh sweetness of Navel Oranges. A great source of vitamin C.
+    </p>
+    <button type="button" on:click={buttonAdd} style="float:left;">
+      Add to Cart
+    </button>
+    <button type="button" on:click={buttonRemove} style="float:left;">
+      Remove from Cart
+    </button>
+  </div>
+  <!-- Kiwi card-->
+  <div class="card">
+    <img
+      src="https://pluspng.com/img-png/kiwi-png-kiwi-png-image-fruit-kiwi-png-pictures-download-png-image-2464.png"
+      alt="kiwi"
+      style="width:95%" />
+    <h2>Kiwi</h2>
+    <p class="price">$1.39</p>
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star" />
+    <span class="fa fa-star" />
+    <span class="fa fa-star" />
+    <p>Treat yourself to the delicious and refreshing taste of kiwi.</p>
+    <button type="button" on:click={buttonAdd} style="float:left;">
+      Add to Cart
+    </button>
+    <button type="button" on:click={buttonRemove} style="float:left;">
+      Remove from Cart
+    </button>
+  </div>
+  <!-- Lime card-->
+  <div class="card">
+    <img
+      src="https://lh3.googleusercontent.com/proxy/iveaEcYs0B-FTuBfxeR74EJv6bLMcPHI5xO6O8QXeHkUgWPIJKP3DS83Q7ryS2wQV227QBdYaF2ti0n79bL0VpXtLXnfhORFul5jIho2Beig47cHzxt7upsKuhwLPfhkvf1m"
+      alt="lime"
+      style="width:113.5%" />
+    <h2>Lime</h2>
+    <p class="price">$0.99</p>
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star" />
+    <span class="fa fa-star" />
+    <p>
+      Freshly squeezed limes provide a healthy dose of vitamin C to your diet.
+    </p>
+    <button type="button" on:click={buttonAdd} style="float:left;">
+      Add to Cart
+    </button>
+    <button type="button" on:click={buttonRemove} style="float:left;">
+      Remove from Cart
+    </button>
+  </div>
+  <!-- Watermelon card-->
+  <div class="card">
+    <img
+      src="https://i.ibb.co/yQxs02M/unnamed-12.png"
+      alt="watermelon"
+      style="width:88%" />
+    <h2>Watermelon</h2>
+    <p class="price">$2.99</p>
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star" />
+    <p>Watermelon is a good source of vitamin C, vitamin A, and potassium.</p>
+    <button type="button" on:click={buttonAdd} style="float:left;">
+      Add to Cart
+    </button>
+    <button type="button" on:click={buttonRemove} style="float:left;">
+      Remove from Cart
+    </button>
+  </div>
+  <!-- Strawberry card-->
+  <div class="card">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/8/86/Strawberry_%28transparent_background%29.png"
+      alt="strawberry"
+      style="width:69.5%" />
+    <h2>Strawberry</h2>
+    <p class="price">$1.49</p>
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star checked" />
+    <p>
+      The sweet, juicy flavor of Fresh Strawberries make them a delicious treat.
+    </p>
+    <button type="button" on:click={buttonAdd} style="float:left;">
+      Add to Cart
+    </button>
+    <button type="button" on:click={buttonRemove} style="float:left;">
+      Remove from Cart
+    </button>
+  </div>
+  <!-- Blueberry card-->
+  <div class="card">
+    <img
+      src="https://lh3.googleusercontent.com/proxy/8KLbL4nayQfpCdY6HEjxItn0nHKCv2ueh3l_k0jRfTwUBlOOkUYBY-sOH-rroVMtPl23l6t6TJ_cyeDS_9LwDHIwfTBR8Rvla8ygpI_InCdgAUrltDKvei9u"
+      alt="blueberry"
+      style="width:94%" />
+    <h2>Bluberries</h2>
+    <p class="price">$1.79</p>
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star checked" />
+    <span class="fa fa-star" />
+    <span class="fa fa-star" />
+    <p>
+      From salads to muffins, these berries can help transform any ordinary
+      food.
+    </p>
+    <button type="button" on:click={buttonAdd} style="float:left;">
+      Add to Cart
+    </button>
+    <button type="button" on:click={buttonRemove} style="float:left;">
+      Remove from Cart
+    </button>
+  </div>
 
-  <p>
-    Freshly squeezed limes provide a healthy dose of vitamin C to your diet.
-  </p>
-
-  <button type="button" on:click={buttonAdd} style="float:left;">
-    Add to Cart
-  </button>
-  <button type="button" on:click={buttonRemove} style="float:left;">
-    Remove from Cart
-  </button>
-</div>
-<!-- Watermelon card-->
-<div class="card">
-  <img
-    src="https://lh3.googleusercontent.com/proxy/-Vgwrfbd8uQjwq9AD_KBDyChn03-3qo08lFRprJpAyGKWsxw_yKVFst9sPgwsF9ulpjm_fcllAMgX-Y8HAz-de6phMxphoV22v2h2WcG0f-OBqLWwnz7VMvaN5-ovkhukawOBascTcI699OmHNg"
-    alt="apple"
-    style="width:88%" />
-  <h2>Watermelon</h2>
-  <p class="price">$2.99</p>
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star" />
-  <p>Watermelon is a good source of vitamin C, vitamin A, and potassium.</p>
-  <button type="button" on:click={buttonAdd} style="float:left;">
-    Add to Cart
-  </button>
-  <button type="button" on:click={buttonRemove} style="float:left;">
-    Remove from Cart
-  </button>
-</div>
-<!-- Strawberry card-->
-<div class="card">
-  <img
-    src="https://upload.wikimedia.org/wikipedia/commons/8/86/Strawberry_%28transparent_background%29.png"
-    alt="apple"
-    style="width:69.5%" />
-  <h2>Strawberry</h2>
-  <p class="price">$1.49</p>
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star checked" />
-  <p>
-    The sweet, juicy flavor of Fresh Strawberries make them a delicious treat.
-  </p>
-  <button type="button" on:click={buttonAdd} style="float:left;">
-    Add to Cart
-  </button>
-  <button type="button" on:click={buttonRemove} style="float:left;">
-    Remove from Cart
-  </button>
-</div>
-<!-- Blueberry card-->
-<div class="card">
-  <img
-    src="https://lh3.googleusercontent.com/proxy/8KLbL4nayQfpCdY6HEjxItn0nHKCv2ueh3l_k0jRfTwUBlOOkUYBY-sOH-rroVMtPl23l6t6TJ_cyeDS_9LwDHIwfTBR8Rvla8ygpI_InCdgAUrltDKvei9u"
-    alt="apple"
-    style="width:94%" />
-  <h2>Bluberries</h2>
-  <p class="price">$1.79</p>
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star checked" />
-  <span class="fa fa-star" />
-  <span class="fa fa-star" />
-  <p>
-    From salads to muffins, these berries can help transform any ordinary food.
-  </p>
-  <button type="button" on:click={buttonAdd} style="float:left;">
-    Add to Cart
-  </button>
-  <button type="button" on:click={buttonRemove} style="float:left;">
-    Remove from Cart
-  </button>
 </div>
